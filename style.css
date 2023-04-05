@@ -1,5 +1,5 @@
 body{
-    background: url(https://picsum.photos/1000/1500?grayscale);
+    background: url(https://picsum.photos/2560/1440?grayscale);
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
@@ -30,10 +30,11 @@ body{
     border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.7s ease;
+    transition: all 0.4s ease;
 }
 .keys .key.active{
     transform: scale(1.1);
+    border-color: rgb(225, 248, 180);
 }
 .keys .key:hover{
    transform: scale(1.1);

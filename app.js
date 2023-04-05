@@ -1,14 +1,18 @@
-$('.key').on('click', function() {
-    let key = $(this).data('key');
-    $('audio[data-key="' + key + '"]').get(0).play();
-});
+function soundPlay(e){
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('active');
+};
 
-$(window).on('keydown', function(e) {
-    let key = e.keyCode;
-    $('audio[data-key="' + key + '"]').get(0).play();
-    $('.key[data-key="' + key + '"]').addClass('active');
+function removeTransition(e){
+    e.target.classList.remove('active')
+}
 
-    $('audio[data-key="' + key + '"]').on('ended', function() {
-        $('.key[data-key="' + key + '"]').removeClass('active');
-    });
-});
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+
+window.addEventListener('keydown' , soundPlay);
